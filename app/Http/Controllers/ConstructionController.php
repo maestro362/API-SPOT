@@ -13,12 +13,12 @@ use App\Models\Data;
 
 class ConstructionController extends Controller
 {
-    protected $user;
+    // protected $user;
  
-    public function __construct()
-    {
-        $this->user = JWTAuth::parseToken()->authenticate();
-    }
+    // public function __construct()
+    // {
+    //     $this->user = JWTAuth::parseToken()->authenticate();
+    // }
 
     public function GetInfo($zip_code,$type)
     {
@@ -91,7 +91,7 @@ class ConstructionController extends Controller
             
             $response = array('status' => true, 'payload' => array('type' => $type, 'price_unit' => $price_unit, 'price_unit_construction' => $price_unit_construction, 'elements' => $elements));
 
-            return $response;
+            return json_encode($response);
             
         } catch (\Exception $e) {
             $response = json_encode(array('status' => false, 'payload' => array('error' => $e->getMessage())));
